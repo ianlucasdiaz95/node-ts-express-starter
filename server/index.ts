@@ -6,7 +6,6 @@ import { PORT } from '../config'
 import { UserController } from '../controllers';
 import { Container } from 'typedi';
 import { dataSource } from '../db/connection';
-import { pagination } from 'typeorm-pagination';
 
 // required by routing-controllers
 useContainer(Container);
@@ -25,8 +24,7 @@ export class Server {
             },
             middlewares: [
                 MorganMiddleware,
-                ErrorMiddleware,
-                pagination
+                ErrorMiddleware
             ],
             defaultErrorHandler: false,
         })
