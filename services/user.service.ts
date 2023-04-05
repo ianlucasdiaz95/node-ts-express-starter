@@ -4,11 +4,16 @@ import { genSaltSync, hashSync } from 'bcrypt';
 import { User } from "../entities"
 import { dataSource } from "../db/connection";
 import { HttpError, NotFoundError } from 'routing-controllers';
+import { Repository } from 'typeorm';
 
 @Service()
 export class UserService {
 
-    private readonly userRepository = dataSource.getRepository(User);
+    private readonly userRepository: Repository<User>;
+
+    constructor() {
+        this.userRepository = dataSource.getRepository(User);
+    }
 
     async getUsers(query: QueryUserDto) {
         const { page, per_page, ...where } = query;
