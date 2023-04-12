@@ -3,7 +3,7 @@
 ### Pending
 
 - [x] Add roles endpoints
-- [ ] Add swagger
+- [x] Add swagger / openAPI
 - [ ] Configure environment and run commands
 - [x] Create a rate limiter middleware
 - [ ] Create auth & token system
@@ -19,5 +19,5 @@
     - [ ] Create a few base templates
 - [ ] Create a Cron Job boilerplate  for using node-cron
 - [ ] Create a file upload endpoint boilerplate
-- [ ] Add a frontend route to / path with a 404 error.
+- [x] Add a frontend route to / path with a 404 error.
 - [ ] Create a PM2 config file for deployment

@@ -7,6 +7,7 @@ import { UserController, RoleController } from '@/controllers';
 import { Container } from 'typedi';
 import { dataSource } from '@/db/connection';
 import { swaggerSpec } from '@/swagger';
+import path from 'path';
 
 // required by routing-controllers
 useContainer(Container);
@@ -14,7 +15,7 @@ useContainer(Container);
 export class Server {
     app: express.Express
     port: string
-    routingControllersOptions: any
+    routingControllersOptions: RoutingControllersOptions
 
     constructor(){
         this.port = PORT
@@ -44,11 +45,14 @@ export class Server {
         //Database connection
         await this.dbConnection()
 
+        //404 Redirect
+        this.notFoundRedirection();
+
         //Mount app
         await this.listen();
 
         //Init docs
-        this.initDocs();
+        this.docs();
     }
 
     async dbConnection(){
@@ -62,7 +66,16 @@ export class Server {
         
     }
 
-    initDocs(){
+    notFoundRedirection(){
+
+        //Redirect non defined paths to 404.html file
+        this.app.get('*', (req, res) => {
+            res.sendFile(path.join(__dirname, '../public', '404.html'));
+        });
+
+    }
+
+    docs(){
         try {
             swaggerSpec(getMetadataArgsStorage, this.routingControllersOptions, this.app);
 
