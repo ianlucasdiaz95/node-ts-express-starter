@@ -2,7 +2,7 @@ import { Middleware, ExpressErrorMiddlewareInterface, HttpError } from 'routing-
 import { Request, Response } from 'express';
 import { Service } from 'typedi';
 import { ValidationError } from 'class-validator';
-import logger from '../log/logger';
+import logger from '@/log/logger';
 
 interface IErrorResponse extends Error {
     success: false;

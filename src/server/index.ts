@@ -1,11 +1,11 @@
 import express from 'express';
 import 'reflect-metadata'; // this shim is required
 import { createExpressServer, useContainer } from 'routing-controllers';
-import { MorganMiddleware, ErrorMiddleware, RateMiddleware } from '../middlewares';
-import { PORT } from '../config'
-import { UserController, RoleController } from '../controllers';
+import { MorganMiddleware, ErrorMiddleware, RateMiddleware } from '@/middlewares';
+import { PORT } from '@/config'
+import { UserController, RoleController } from '@/controllers';
 import { Container } from 'typedi';
-import { dataSource } from '../db/connection';
+import { dataSource } from '@/db/connection';
 // required by routing-controllers
 useContainer(Container);
 

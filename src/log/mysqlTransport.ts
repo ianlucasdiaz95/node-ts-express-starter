@@ -1,6 +1,6 @@
 import Transport from "winston-transport";
-import { Log } from "../entities";
-import { dataSource } from "../db/connection";
+import { Log } from "@/entities";
+import { dataSource } from "@/db/connection";
 
 const logRepository = dataSource.getRepository(Log)
 //

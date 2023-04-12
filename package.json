@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "serve:dev": "nodemon app.ts",
+    "serve:dev": "nodemon",
     "seed": "ts-node ./node_modules/typeorm-extension/dist/cli/index.js seed -d connection.ts -r db/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -39,6 +39,7 @@
     "@types/node": "^18.15.11",
     "nodemon": "^2.0.22",
     "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.0.3"
   }
 }

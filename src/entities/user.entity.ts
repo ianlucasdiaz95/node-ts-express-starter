@@ -1,9 +1,6 @@
-import { Entity, Column, ManyToOne, JoinColumn, BeforeInsert, BeforeUpdate, Repository } from 'typeorm';
+import { Entity, Column, BeforeInsert, BeforeUpdate } from 'typeorm';
 import { BaseEntity } from './base.entity';
-import { Role } from './role.entity';
 import { genSaltSync, hashSync } from 'bcrypt';
-import { dataSource } from '../db/connection';
-import { RoleService } from '../services';
 
 
 @Entity()

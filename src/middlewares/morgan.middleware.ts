@@ -1,4 +1,3 @@
-const morgan = require('morgan');
 import { ExpressMiddlewareInterface, Middleware } from 'routing-controllers';
 import morgan from 'morgan'
 import { Service } from 'typedi';

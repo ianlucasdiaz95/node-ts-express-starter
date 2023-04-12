@@ -1,9 +1,9 @@
 import { Service } from 'typedi';
-import { RoleService } from './../services';
+import { RoleService } from '@/services';
 import { JsonController, Post, Get, Put, Delete, Body, Param, QueryParams  } from 'routing-controllers';
-import { CreateRoleDto, QueryRoleDto, UpdateRoleDto } from '../dto';
-import { Role } from '../entities';
-import { EntityMapper } from '../clients';
+import { CreateRoleDto, QueryRoleDto, UpdateRoleDto } from '@/dto';
+import { Role } from '@/entities';
+import { EntityMapper } from '@/clients';
 
 @JsonController('/role')
 @Service()

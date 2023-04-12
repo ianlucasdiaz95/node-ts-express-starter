@@ -1,7 +1,7 @@
-import { QueryRoleDto } from './../dto';
+import { QueryRoleDto } from '@/dto';
 import { Service } from "typedi"
-import { Role } from "../entities"
-import { dataSource } from "../db/connection";
+import { Role } from "@/entities"
+import { dataSource } from "@/db/connection";
 import { NotFoundError } from 'routing-controllers';
 import { Repository } from 'typeorm';
 
