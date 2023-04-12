@@ -13,5 +13,7 @@ export const {
     DB_PORT,
     DB_USERNAME,
     DB_PASSWORD,
-    DB_DATABASE
+    DB_DATABASE,
+    RATE_LIMIT_WINDOW,
+    RATE_LIMIT_MAX_REQUESTS
 } = process.env;
