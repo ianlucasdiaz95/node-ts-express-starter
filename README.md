@@ -13,7 +13,7 @@
 - [x] Create database seeds & factory for new projects
 - [ ] Implement migration / factory commands for TypeORM
 - [ ] Integrate with redis
-- [ ] Move root project folder to /src
+- [x] Move root project folder to /src
 - [ ] Create nodemailer integration for sending emails
     - [ ] Add handlebars templating system for emails
     - [ ] Create a few base templates
