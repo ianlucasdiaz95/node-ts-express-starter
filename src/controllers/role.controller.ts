@@ -11,7 +11,7 @@ export class RoleController {
 
     constructor(private roleService: RoleService){}
 
-    @Post()
+    @Post('/')
     async post(@Body() roleDTO: CreateRoleDto) {
 
         const role: Role = EntityMapper.mapTo(Role, roleDTO);
@@ -25,7 +25,7 @@ export class RoleController {
 
     }
 
-    @Get()
+    @Get('/')
     async getAll(@QueryParams() query: QueryRoleDto) {
 
         const result = await this.roleService.getRoles(query);

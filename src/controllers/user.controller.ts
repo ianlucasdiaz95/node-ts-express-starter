@@ -1,17 +1,16 @@
 import { Service } from 'typedi';
 import { UserService } from './../services';
 import { JsonController, Post, Get, Put, Delete, Body, Param, QueryParams  } from 'routing-controllers';
-import { CreateUserDto, QueryUserDto, UpdateUserDto } from '../dto';
-import { User } from '../entities';
-import { EntityMapper } from '../clients';
-
+import { CreateUserDto, QueryUserDto, UpdateUserDto } from '@/dto';
+import { User } from '@/entities';
+import { EntityMapper } from '@/clients';
 @JsonController('/user')
 @Service()
 export class UserController {
 
     constructor(private userService: UserService){}
 
-    @Post()
+    @Post('/')
     async post(@Body() userDTO: CreateUserDto) {
 
         const user: User = EntityMapper.mapTo(User, userDTO);
@@ -25,7 +24,7 @@ export class UserController {
 
     }
 
-    @Get()
+    @Get('/')
     async getAll(@QueryParams() query: QueryUserDto) {
 
         const result = await this.userService.getUsers(query);

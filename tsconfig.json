@@ -14,7 +14,13 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "baseUrl": ".",
+    "types": [
+      "class-validator-jsonschema"
+    ],
     "paths": {
+      "@/*": [
+        "src/*"
+      ],
       "@/clients": [
         "src/clients/index"
       ],
