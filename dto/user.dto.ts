@@ -6,7 +6,6 @@ export class QueryUserDto {
     id?: number
     name?: string
     email?: string
-    roleId?: number
 }
 
 type QueryUserWhere = Omit<QueryUserDto, 'page' | 'per_page'>;
@@ -24,9 +23,9 @@ export class CreateUserDto {
     @IsString()
     password: string;
 
-    @IsNumber()
+    @IsString()
     @IsOptional()
-    roleId?: number;
+    role?: number;
 }
 
 export class UpdateUserDto {
@@ -42,7 +41,7 @@ export class UpdateUserDto {
     @IsOptional()
     password?: string;
 
-    @IsNumber()
+    @IsString()
     @IsOptional()
-    roleId?: number;
+    role?: number;
 }

@@ -1,9 +1,9 @@
+import { RoleService } from './role.service';
 import { QueryUserDto } from './../dto';
 import { Service } from "typedi"
-import { genSaltSync, hashSync } from 'bcrypt';
 import { User } from "../entities"
 import { dataSource } from "../db/connection";
-import { HttpError, NotFoundError } from 'routing-controllers';
+import { NotFoundError } from 'routing-controllers';
 import { Repository } from 'typeorm';
 
 @Service()
@@ -11,7 +11,7 @@ export class UserService {
 
     private readonly userRepository: Repository<User>;
 
-    constructor() {
+    constructor(private roleService: RoleService) {
         this.userRepository = dataSource.getRepository(User);
     }
 
@@ -57,17 +57,17 @@ export class UserService {
 
     async createUser(user: User) {
 
-        user.password = this.hashPassword(user.password);
+        if(!user.role){
+            const defaultRole = await this.roleService.getDefaultRole()
+            user.role = defaultRole.name;
+        }
+            
 
         return await this.userRepository.save(user);
 
     }
 
     async editUser(id: number, user: User) {
-
-        if(user.password){
-            user.password = this.hashPassword(user.password);
-        }
 
         await this.userRepository.update(id, { ...user });
 
@@ -84,9 +84,5 @@ export class UserService {
         }
 
         return `Register with id: ${id} deleted`
-    }
-
-    hashPassword(password: string): string {
-        return hashSync(password, genSaltSync());
     }
 }

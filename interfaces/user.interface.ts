@@ -3,8 +3,7 @@ interface IUser {
     email: string
     name: string
     password: string
-    role: IRole
-    roleId: string
+    role: string
     createdAt: Date
     updatedAt: Date
 }
