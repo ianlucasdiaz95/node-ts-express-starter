@@ -2,15 +2,15 @@
 
 ### Pending
 
-- [ ] Add roles endpoints
+- [x] Add roles endpoints
 - [ ] Add swagger
 - [ ] Configure environment and run commands
-- [ ] Create a rate limiter middleware
+- [x] Create a rate limiter middleware
 - [ ] Create auth & token system
     - [ ] Register, login, password recovery
     - [ ] Integrate with roles
     - [ ] Create a middleware for authenticated routes & roles
-- [ ] Create database seeds & factory for new projects
+- [x] Create database seeds & factory for new projects
 - [ ] Implement migration / factory commands for TypeORM
 - [ ] Integrate with redis
 - [ ] Move root project folder to /src
