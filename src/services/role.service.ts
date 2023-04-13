@@ -49,7 +49,7 @@ export class RoleService {
     async createRole(role: Role) {
 
         if (role.isDefault) {
-            this.updateDefaultRoleConstraint();
+            await this.updateDefaultRoleConstraint();
         }
         
 
@@ -60,7 +60,7 @@ export class RoleService {
     async editRole(id: number, role: Role) {
 
         if(role.isDefault){
-            this.updateDefaultRoleConstraint();
+            await this.updateDefaultRoleConstraint();
         }
 
         await this.roleRepository.update(id, { ...role });

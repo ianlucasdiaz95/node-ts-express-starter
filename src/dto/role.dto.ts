@@ -1,14 +1,15 @@
+import { Roles } from '@/interfaces';
 import { IsString, IsNotEmpty, IsOptional, IsBoolean } from 'class-validator';
 
 export class QueryRoleDto {
-    name?: string
+    name?: Roles
     isDefault?: boolean
 }
 
 export class CreateRoleDto {
     @IsNotEmpty()
     @IsString()
-    name: string;
+    name: Roles;
 
     @IsOptional()
     @IsBoolean()
@@ -18,7 +19,7 @@ export class CreateRoleDto {
 export class UpdateRoleDto {
     @IsOptional()
     @IsString()
-    name: string;
+    name: Roles;
 
     @IsOptional()
     @IsBoolean()

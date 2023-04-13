@@ -1,9 +1,11 @@
 import { Service } from 'typedi';
-import { UserService } from './../services';
-import { JsonController, Post, Get, Put, Delete, Body, Param, QueryParams  } from 'routing-controllers';
+import { UserService } from '@/services';
+import { JsonController, Post, Get, Put, Delete, Body, Param, QueryParams, Authorized  } from 'routing-controllers';
 import { CreateUserDto, QueryUserDto, UpdateUserDto } from '@/dto';
 import { User } from '@/entities';
 import { EntityMapper } from '@/clients';
+
+@Authorized(['ADMIN', 'USER'])
 @JsonController('/user')
 @Service()
 export class UserController {

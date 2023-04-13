@@ -3,11 +3,12 @@ import 'reflect-metadata'; // this shim is required
 import { RoutingControllersOptions, createExpressServer, getMetadataArgsStorage, useContainer } from 'routing-controllers';
 import { MorganMiddleware, ErrorMiddleware, RateMiddleware } from '@/middlewares';
 import { PORT } from '@/config'
-import { UserController, RoleController } from '@/controllers';
+import { UserController, RoleController, AuthController } from '@/controllers';
 import { Container } from 'typedi';
 import { dataSource } from '@/db/connection';
 import { swaggerSpec } from '@/swagger';
 import path from 'path';
+import { CheckerService } from '@/services';
 
 // required by routing-controllers
 useContainer(Container);
@@ -22,9 +23,12 @@ export class Server {
         this.routingControllersOptions = {
             controllers: [
                 UserController,
-                RoleController
+                RoleController,
+                AuthController
             ],
             routePrefix: '/api',
+            currentUserChecker: CheckerService.getInstance().currentUserChecker,
+            authorizationChecker: CheckerService.getInstance().authorizationChecker,
             cors: {
                 origin: '*',
             },
@@ -46,7 +50,11 @@ export class Server {
         await this.dbConnection()
 
         //404 Redirect
-        this.notFoundRedirection();
+        this.app.use((req, res) => {
+            if (req.accepts('html') && !res.headersSent) {
+                res.sendFile(path.join(__dirname, '../public', '404.html'));
+            }
+        })
 
         //Mount app
         await this.listen();
@@ -64,15 +72,6 @@ export class Server {
             console.log('Database error: ', error);
         }
         
-    }
-
-    notFoundRedirection(){
-
-        //Redirect non defined paths to 404.html file
-        this.app.get('*', (req, res) => {
-            res.sendFile(path.join(__dirname, '../public', '404.html'));
-        });
-
     }
 
     docs(){

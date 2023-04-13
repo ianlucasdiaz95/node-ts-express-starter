@@ -1,5 +1,10 @@
-interface IRole {
+export interface IRole {
     id: number
-    name: string
+    name: Roles
     isDefault: boolean
+}
+
+export enum Roles {
+    ADMIN = "ADMIN",
+    USER = "USER"
 }

@@ -1,11 +1,12 @@
 import { Entity, Column } from 'typeorm';
 import { BaseEntity } from './base.entity';
+import { Roles } from '@/interfaces';
 
 @Entity()
 export class Role extends BaseEntity {
 
     @Column({ unique: true })
-    name: string;
+    name: Roles;
 
     @Column({ default: false })
     isDefault: boolean;

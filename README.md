@@ -7,9 +7,13 @@
 - [ ] Configure environment and run commands
 - [x] Create a rate limiter middleware
 - [ ] Create auth & token system
-    - [ ] Register, login, password recovery
-    - [ ] Integrate with roles
-    - [ ] Create a middleware for authenticated routes & roles
+    - [x] Login endpoint
+    - [x] Refresh token endpoint
+    - [ ] Register endpoint
+    - [ ] Password recovery endpoint
+    - [ ] Password recovery email
+    - [x] Integrate with roles
+    - [x] Create a middleware for authenticated routes & roles
 - [x] Create database seeds & factory for new projects
 - [ ] Implement migration / factory commands for TypeORM
 - [ ] Integrate with redis

@@ -1,4 +1,4 @@
-interface ILog {
+export interface ILog {
     id: number
     name: string
     level: string

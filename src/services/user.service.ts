@@ -55,6 +55,21 @@ export class UserService {
         return data
     }
 
+    async getUserByEmail(email: string) {
+
+        const data = await this.userRepository.findOne({
+            where: {
+                email
+            }
+        });
+
+        if (!data) {
+            throw new NotFoundError('No data found')
+        }
+
+        return data
+    }
+
     async createUser(user: User) {
 
         if(!user.role){

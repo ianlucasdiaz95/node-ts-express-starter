@@ -1,6 +1,7 @@
 import { Entity, Column, BeforeInsert, BeforeUpdate } from 'typeorm';
 import { BaseEntity } from './base.entity';
 import { genSaltSync, hashSync } from 'bcrypt';
+import { Roles } from '@/interfaces';
 
 
 @Entity()
@@ -12,11 +13,11 @@ export class User extends BaseEntity {
     @Column({ nullable: true })
     name: string;
 
-    @Column( { select: false })
+    @Column()
     password: string;
 
-    @Column({ nullable: true, default: 'USER' })
-    role: string;
+    @Column({ nullable: true, default: Roles.USER })
+    role: Roles;
 
     /* TODO: delete this statement, just an example on how to create relations
     @ManyToOne(() => Role, role => role.users)

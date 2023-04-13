@@ -1,3 +1,4 @@
+import { Roles } from '@/interfaces';
 import { IsString, IsEmail, IsNotEmpty, IsNumber, IsOptional } from 'class-validator';
 
 export class QueryUserDto {
@@ -25,7 +26,7 @@ export class CreateUserDto {
 
     @IsString()
     @IsOptional()
-    role?: number;
+    role?: Roles;
 }
 
 export class UpdateUserDto {
@@ -43,5 +44,5 @@ export class UpdateUserDto {
 
     @IsString()
     @IsOptional()
-    role?: number;
+    role?: Roles;
 }
