@@ -6,7 +6,7 @@
 - [x] Add swagger / openAPI
 - [ ] Configure environment and run commands
 - [x] Create a rate limiter middleware
-- [ ] Create auth & token system
+- [ ] Create auth, roles & token system
     - [x] Login endpoint
     - [x] Refresh token endpoint
     - [ ] Register endpoint
